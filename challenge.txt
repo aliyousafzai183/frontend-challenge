@@ -1,0 +1,81 @@
+Frontend Challenge — Pickup & Delivery
+Flow (React or React Native)
+Timebox
+90–120 minutes (document any trade-offs or unfinished stretch goals).
+Platform
+You may implement this challenge in React (web) or React Native (mobile).
+● If React (web): Use any build tool (Vite/CRA/Next in SPA mode).
+● If React Native: Use Expo (recommended) or vanilla RN.
+Tech Constraints
+● No backend calls; everything runs locally.
+● State may be React state, Context, Redux, Zustand, or URL/route params.
+● Any styling approach is fine.
+● Navigation:
+○ React (web): use React Router (or equivalent).
+○ React Native: use React Navigation (stack recommended).
+User Stories
+1) Login (/login or LoginScreen)
+● Email + Password fields, “Sign in” button.
+● Validation: email format; password ≥ 6 chars.
+● On success, redirect/navigate to Delivery Preference.
+2) Delivery Preference (/preference or PreferenceScreen)
+● Choose one: In-store pickup, Delivery, Curbside pickup.
+● Show fields based on selection:
+○ In-store: date & time you’ll arrive.
+○ Delivery: address (single line), date & time for delivery.
+○ Curbside: car description (free text), date & time for arrival.
+● Submit navigates to Summary.
+3) Summary (/summary or SummaryScreen)
+● Display: user email, selected preference, and its fields.
+● Provide Edit to return and adjust choices.
+● Provide Sign out / Reset to clear state and go back to login.
+Acceptance Criteria
+Auth & Guards
+● Unauthenticated users hitting Preference/Summary are redirected to Login.
+● Authenticated users hitting Login are redirected to Preference.
+Validation & UX
+● Inline, helpful errors; disable submit until valid.
+● Date/time must be in the future (relative to now).
+● Focus management (web) or sensible keyboard behavior (mobile).
+State
+● Choices persist when navigating between steps.
+● Clearing state on Sign out.
+● Nice-to-have: persistence across app reload (localStorage/AsyncStorage).
+Accessibility / Mobile ergonomics
+● Web: semantic labels, keyboard nav, ARIA where needed.
+● Mobile: accessible labels, proper touch targets, safe-area padding, avoiding keyboard
+overlap.
+Testing
+● Include basic tests for critical paths:
+○ Successful login → navigation/redirect.
+○ Guarded navigation when unauthenticated.
+○ Conditional fields render per selection.
+○ Past time validation blocks submit.
+○ Summary reflects entered data.
+Testing libraries:
+● Web: React Testing Library + Vitest/Jest.
+● RN: @testing-library/react-native + Jest.
+Mock Rules (No Backend)
+● Any valid email + password length ≥ 6 “logs in”.
+● Address required for Delivery (8–120 chars).
+● Car description required for Curbside (5–120 chars).
+● Date+time must be strictly in the future.
+Deliverables
+● A runnable project:
+○ Web: npm i && npm run dev (or Next npm run dev).
+○ RN (Expo): npm i && npx expo start.
+● README covering:
+○ Platform chosen and why
+○ Setup & run instructions
+○ Design decisions (state, navigation, validation)
+○ What you’d improve with more time
+○ How to run tests (npm test)
+● 3–5 meaningful tests as described above.
+Stretch Goals (Optional)
+● Store hours validation (e.g., 09:00–21:00).
+● Reusable form primitives or schema validation (Zod/Yup).
+● URL/query-param state (web) or deep link params (mobile).
+● Offline-friendly UX (no assumptions of connectivity).
+● Mobile: date/time pickers native to platform; address field with basic local suggestions
+(no network).
+● Polished mobile layout (keyboard-aware views), or web responsive layout.
