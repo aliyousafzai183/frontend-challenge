@@ -41,11 +41,10 @@ npm test
 
 ![Tests Passed](./assets/images/test-passed.png)
 
-<!-- GitHub renders MP4 inline more reliably than MOV. MOV may show as a download link. -->
-<video src="./assets/videos/demo.mov" controls width="360">
+<!-- MP4 plays inline on GitHub; fallback link included. -->
+<video src="./assets/videos/demo.mp4" controls width="360">
   Your browser does not support the video tag. You can download the video
-  <a href="./assets/videos/demo.mov">here</a>.
-  
+  <a href="./assets/videos/demo.mp4">here</a>.
 </video>
 
 ## What I'd Improve with More Time
