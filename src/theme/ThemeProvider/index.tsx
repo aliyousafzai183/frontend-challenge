@@ -1,11 +1,14 @@
+import { useColorScheme } from '@/src/hooks/useColorScheme/useColorScheme';
 import React, { PropsWithChildren } from 'react';
 import { ThemeProvider as SCThemeProvider } from 'styled-components/native';
-import { theme } from '../tokens';
+import { darkTheme, lightTheme } from '../tokens';
 
 export function ThemeProvider({ children }: PropsWithChildren) {
+  const scheme = useColorScheme() ?? 'light';
+  const theme = scheme === 'dark' ? darkTheme : lightTheme;
   return <SCThemeProvider theme={theme}>{children}</SCThemeProvider>;
 }
 
-export { theme } from '../tokens';
+export { darkTheme, lightTheme } from '../tokens';
 
 
