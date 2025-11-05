@@ -9,7 +9,6 @@ import type { RootStackParamList } from "@/src/navigation/RootNavigator/RootNavi
 import { useAppStore } from "@/src/stores/AppStore";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import React, { useMemo, useState } from "react";
-import { Title } from "./Preference.styles";
 import {
   curbsideSchema,
   deliverySchema,
@@ -94,6 +93,26 @@ function PreferenceScreen({ route, navigation }: Props) {
     }
   };
 
+  const validateDeliveryAddress = async () => {
+    if (type !== 'delivery') return;
+    try {
+      await deliverySchema.validateAt('address', { type, address, date, time });
+      setErrors((e) => ({ ...e, address: '' }));
+    } catch (e: any) {
+      setErrors((prev) => ({ ...prev, address: e?.message as string }));
+    }
+  };
+
+  const validateCurbsideCar = async () => {
+    if (type !== 'curbside') return;
+    try {
+      await curbsideSchema.validateAt('carDescription', { type, carDescription, date, time });
+      setErrors((e) => ({ ...e, carDescription: '' }));
+    } catch (e: any) {
+      setErrors((prev) => ({ ...prev, carDescription: e?.message as string }));
+    }
+  };
+
   return (
     <Screen
       bottomContent={
@@ -105,7 +124,6 @@ function PreferenceScreen({ route, navigation }: Props) {
         />
       }
     >
-      <Title>Delivery Preference</Title>
       <RadioGroup
         options={[
           { label: "In-store", value: "in_store" },
@@ -121,6 +139,7 @@ function PreferenceScreen({ route, navigation }: Props) {
           value={address}
           onChange={setAddress}
           error={errors.address}
+          onBlur={validateDeliveryAddress}
         />
       ) : null}
 
@@ -129,6 +148,7 @@ function PreferenceScreen({ route, navigation }: Props) {
           label="Car description"
           value={carDescription}
           onChangeText={setCarDescription}
+          onBlur={validateCurbsideCar}
           placeholder="e.g., Blue Honda Civic"
           error={errors.carDescription}
         />

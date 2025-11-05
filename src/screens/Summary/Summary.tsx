@@ -1,11 +1,12 @@
 import { Button } from "@/src/components/Button";
+import { ConfirmDialog } from "@/src/components/ConfirmDialog";
 import { Screen } from "@/src/components/Screen";
 import { useAuthGuard } from "@/src/hooks/useAuthGuard";
 import type { RootStackParamList } from "@/src/navigation/RootNavigator/RootNavigator";
 import { useAppStore } from "@/src/stores/AppStore";
 import { Ionicons } from "@expo/vector-icons";
 import type { NativeStackScreenProps } from "@react-navigation/native-stack";
-import React from "react";
+import React, { useState } from "react";
 import { DefaultTheme } from "styled-components";
 import { useTheme } from "styled-components/native";
 import {
@@ -25,13 +26,14 @@ function SummaryScreen({ navigation }: Props) {
   const email = useAppStore((s) => s.auth.email);
   const pref = useAppStore((s) => s.preference);
   const signOut = useAppStore((s) => s.signOut);
+  const [showConfirm, setShowConfirm] = useState(false);
 
   return (
     <Screen
       bottomContent={
         <Button
           title="Edit"
-          onPress={() => navigation.navigate("Preference")}
+          onPress={() => navigation.reset({ index: 0, routes: [{ name: 'Preference' }] })}
         />
       }
     >
@@ -74,10 +76,7 @@ function SummaryScreen({ navigation }: Props) {
       <FloatingAction
         accessibilityRole="button"
         accessibilityLabel="Sign out"
-        onPress={() => {
-          signOut();
-          navigation.reset({ index: 0, routes: [{ name: "Login" }] });
-        }}
+        onPress={() => setShowConfirm(true)}
       >
         <Ionicons
           name="log-out-outline"
@@ -85,6 +84,20 @@ function SummaryScreen({ navigation }: Props) {
           color={(theme as DefaultTheme).colors.primaryContrast}
         />
       </FloatingAction>
+
+      <ConfirmDialog
+        visible={showConfirm}
+        title="Sign out?"
+        description="You will be returned to the login screen and your data will be cleared."
+        cancelText="Cancel"
+        confirmText="Confirm"
+        onCancel={() => setShowConfirm(false)}
+        onConfirm={() => {
+          setShowConfirm(false);
+          signOut();
+          navigation.reset({ index: 0, routes: [{ name: 'Login' }] });
+        }}
+      />
     </Screen>
   );
 }

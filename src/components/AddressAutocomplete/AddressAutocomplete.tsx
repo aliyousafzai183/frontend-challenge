@@ -8,9 +8,10 @@ type Props = {
   value: string;
   onChange: (text: string) => void;
   error?: string | null;
+  onBlur?: () => void;
 };
 
-export function AddressAutocomplete({ value, onChange, error }: Props) {
+export function AddressAutocomplete({ value, onChange, error, onBlur }: Props) {
   const [query, setQuery] = useState(value);
   const [isOpen, setIsOpen] = useState(false);
   const results = useMemo(() => searchAddresses(query, 6), [query]);
@@ -23,6 +24,10 @@ export function AddressAutocomplete({ value, onChange, error }: Props) {
           setQuery(t);
           onChange(t);
           setIsOpen(true);
+        }}
+        onBlur={() => {
+          setIsOpen(false);
+          onBlur && onBlur();
         }}
         placeholder="Start typing address"
         error={error || null}

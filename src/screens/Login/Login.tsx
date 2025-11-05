@@ -55,6 +55,15 @@ function LoginScreen({ navigation }: Props) {
     }
   };
 
+  const validateField = async (field: keyof LoginValues) => {
+    try {
+      await loginSchema.validateAt(field, values);
+      setErrors((prev) => ({ ...prev, [field]: undefined }));
+    } catch (e: any) {
+      setErrors((prev) => ({ ...prev, [field]: e?.message as string }));
+    }
+  };
+
   return (
     <Screen
       bottomContent={
@@ -71,6 +80,7 @@ function LoginScreen({ navigation }: Props) {
         label="Email"
         value={values.email}
         onChangeText={(t) => setValues((v) => ({ ...v, email: t }))}
+        onBlur={() => validateField('email')}
         placeholder="you@example.com"
         keyboardType="email-address"
         autoCapitalize="none"
@@ -81,6 +91,7 @@ function LoginScreen({ navigation }: Props) {
         label="Password"
         value={values.password}
         onChangeText={(t) => setValues((v) => ({ ...v, password: t }))}
+        onBlur={() => validateField('password')}
         placeholder="••••••"
         secureTextEntry
         returnKeyType="done"

@@ -1,50 +1,45 @@
-# Welcome to your Expo app 👋
+# Pickup & Delivery — React Native (Expo)
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A small mobile app implementing Logi, Delivery Preference, Summary using Expo, styled-components, React Navigation and Zustand. It runs entirely on-device (no backend).
 
-## Get started
+## Getting Started
 
-1. Install dependencies
+- Install: `npm i`
+- Run: `npx expo start`
 
-   ```bash
-   npm install
-   ```
+## Tech & Decisions
 
-2. Start the app
+- Navigation: React Navigation (native-stack) with deep link scheme `pickupapp://`
+- State: Zustand with AsyncStorage persistence (auth + preference)
+- Styling: styled-components with typed theme and light/dark modes
+- Validation: Yup (inline errors on blur, submit disabled until valid)
+- UX:
+  - Sticky bottom actions via Screen `bottomContent`
+  - Native date/time pickers in modals; 24h format; store hours enforced (09:00–21:00)
+  - Address autocomplete with local suggestions (Fuse.js), overlay dropdown
+  - Summary in a themed card; floating red sign-out action with confirm dialog
 
-   ```bash
-   npx expo start
-   ```
+## Flows
 
-In the output, you'll find options to open the app in a
+- Login: any valid email + password length ≥ 6; redirects to Preference
+- Preference: choose In-store, Delivery, or Curbside
+  - In-store: date & time
+  - Delivery: address, date & time
+  - Curbside: car description, date & time
+  - Future date/time enforced; store hours 09:00–21:00 enforced with inline hint on clamp
+- Summary: shows email, selection, and fields; Edit to go back; Sign out clears state
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+## Tests
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+Run tests:
 
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
+```
+npm test
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+## What I'd Improve with More Time
 
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+- More test coverage (future time blocking, summary values)
+- Polished animations (picker sheet, dropdown)
+- Better tablet layout and landscape tweaks
+- Internationalization (i18n)

@@ -20,7 +20,11 @@ export const inStoreSchema = yup.object({
 
 export const deliverySchema = yup.object({
   type: yup.mixed<'delivery'>().oneOf(['delivery']).required(),
-  address: yup.string().min(8).max(120).required('Address is required'),
+  address: yup
+    .string()
+    .min(8, 'Address must be at least 8 characters')
+    .max(120, 'Address must be at most 120 characters')
+    .required('Address is required'),
   ...base,
 }).test('future', 'Select a future date/time', (v) => {
   const iso = combineDateTimeToISO(v.date, v.time);
@@ -29,7 +33,11 @@ export const deliverySchema = yup.object({
 
 export const curbsideSchema = yup.object({
   type: yup.mixed<'curbside'>().oneOf(['curbside']).required(),
-  carDescription: yup.string().min(5).max(120).required('Car description is required'),
+  carDescription: yup
+    .string()
+    .min(5, 'Car description must be at least 5 characters')
+    .max(120, 'Car description must be at most 120 characters')
+    .required('Car description is required'),
   ...base,
 }).test('future', 'Select a future date/time', (v) => {
   const iso = combineDateTimeToISO(v.date, v.time);
