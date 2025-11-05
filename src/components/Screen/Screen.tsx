@@ -1,17 +1,6 @@
 import React, { PropsWithChildren } from 'react';
 import { KeyboardAvoidingView, Platform, ScrollView } from 'react-native';
-import { DefaultTheme } from 'styled-components';
-import styled from 'styled-components/native';
-
-const Container = styled.SafeAreaView(({ theme }: { theme: DefaultTheme }) => `
-  flex: 1;
-  background-color: ${theme.colors.background};
-`);
-
-const Content = styled.View(({ theme }: { theme: DefaultTheme }) => `
-  flex: 1;
-  padding: ${theme.spacing(2)}px;
-`);
+import { Container, Content } from './Screen.styles';
 
 export function Screen({ children }: PropsWithChildren) {
   return (

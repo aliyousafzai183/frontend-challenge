@@ -1,19 +1,12 @@
+import { Button } from '@/src/components/Button';
+import { FormField } from '@/src/components/FormField';
+import { Screen } from '@/src/components/Screen';
+import type { RootStackParamList } from '@/src/navigation/RootNavigator/RootNavigator';
+import { useAppStore } from '@/src/stores/AppStore';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import React, { useMemo, useState } from 'react';
-import { DefaultTheme } from 'styled-components';
-import styled from 'styled-components/native';
-import { Button } from '../../components/ui/Button';
-import { FormField } from '../../components/ui/FormField';
-import { Screen } from '../../components/ui/Screen';
-import type { RootStackParamList } from '../../navigation/RootNavigator';
-import { useAppStore } from '../../stores/AppStore';
-import { loginSchema, type LoginValues } from './validations';
-
-const Title = styled.Text(({ theme }: { theme: DefaultTheme }) => `
-  font-size: ${theme.typography.title}px;
-  font-weight: 700;
-  margin-bottom: ${theme.spacing(2)}px;
-`);
+import { Title } from './Login.styles';
+import { loginSchema, type LoginValues } from './Login.validations';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'Login'>;
 
@@ -29,7 +22,7 @@ function LoginScreen({ navigation }: Props) {
     try {
       loginSchema.validateSync(values, { abortEarly: false });
       return true;
-    } catch (e: any) {
+    } catch {
       return false;
     }
   }, [values]);
@@ -48,9 +41,7 @@ function LoginScreen({ navigation }: Props) {
       navigation.replace('Preference');
     } catch (e: any) {
       const next: any = {};
-      e?.inner?.forEach((err: any) => {
-        if (err.path) next[err.path] = err.message;
-      });
+      e?.inner?.forEach((err: any) => { if (err.path) next[err.path] = err.message; });
       setErrors(next);
     } finally {
       setSubmitting(false);

@@ -1,23 +1,16 @@
-import { AddressAutocomplete } from '@/src/components/ui/AddressAutocomplete';
-import { Button } from '@/src/components/ui/Button';
-import { DateTimeField } from '@/src/components/ui/DateTimeField';
-import { FormField } from '@/src/components/ui/FormField';
-import { RadioGroup } from '@/src/components/ui/RadioGroup';
-import { Screen } from '@/src/components/ui/Screen';
+import { AddressAutocomplete } from '@/src/components/AddressAutocomplete';
+import { Button } from '@/src/components/Button';
+import { DateTimeField } from '@/src/components/DateTimeField';
+import { FormField } from '@/src/components/FormField';
+import { RadioGroup } from '@/src/components/RadioGroup';
+import { Screen } from '@/src/components/Screen';
 import { useAuthGuard } from '@/src/hooks/useAuthGuard';
-import type { RootStackParamList } from '@/src/navigation/RootNavigator';
-import { curbsideSchema, deliverySchema, inStoreSchema } from '@/src/screens/Preference/validations';
+import type { RootStackParamList } from '@/src/navigation/RootNavigator/RootNavigator';
 import { useAppStore } from '@/src/stores/AppStore';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import React, { useMemo, useState } from 'react';
-import { DefaultTheme } from 'styled-components';
-import styled from 'styled-components/native';
-
-const Title = styled.Text(({ theme }: { theme: DefaultTheme }) => `
-  font-size: ${theme.typography.title}px;
-  font-weight: 700;
-  margin-bottom: ${theme.spacing(2)}px;
-`);
+import { Title } from './Preference.styles';
+import { curbsideSchema, deliverySchema, inStoreSchema } from './Preference.validations';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'Preference'>;
 

@@ -1,8 +1,8 @@
+import { LoginScreen } from '@/src/screens/Login';
+import { PreferenceScreen } from '@/src/screens/Preference';
+import { SummaryScreen } from '@/src/screens/Summary';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React from 'react';
-import LoginScreen from '../../screens/Login/index';
-import PreferenceScreen from '../../screens/Preference/index';
-import SummaryScreen from '../../screens/Summary/index';
 
 export type RootStackParamList = {
   Login: undefined;

@@ -1,27 +1,6 @@
 import DateTimePicker from '@react-native-community/datetimepicker';
 import React, { useState } from 'react';
-import { DefaultTheme } from 'styled-components';
-import styled from 'styled-components/native';
-
-const Row = styled.View(({ theme }: { theme: DefaultTheme }) => `
-  flex-direction: row;
-  gap: ${theme.spacing(1)}px;
-  margin-bottom: ${theme.spacing(2)}px;
-`);
-
-const Box = styled.Pressable(({ theme }: { theme: DefaultTheme }) => `
-  flex: 1;
-  height: 48px;
-  border-radius: ${theme.radii.md}px;
-  border-width: 1px;
-  border-color: ${theme.colors.border};
-  align-items: center;
-  justify-content: center;
-`);
-
-const BoxText = styled.Text(({ theme }: { theme: DefaultTheme }) => `
-  font-size: ${theme.typography.body}px;
-`);
+import { Box, BoxText, Row } from './DateTimeField.styles';
 
 type Props = {
   date: string | undefined;

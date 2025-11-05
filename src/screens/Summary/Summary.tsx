@@ -1,30 +1,11 @@
+import { Button } from '@/src/components/Button';
+import { Screen } from '@/src/components/Screen';
+import { useAuthGuard } from '@/src/hooks/useAuthGuard';
+import type { RootStackParamList } from '@/src/navigation/RootNavigator/RootNavigator';
+import { useAppStore } from '@/src/stores/AppStore';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import React from 'react';
-import { DefaultTheme } from 'styled-components';
-import styled from 'styled-components/native';
-import { Button } from '../../components/ui/Button';
-import { Screen } from '../../components/ui/Screen';
-import { useAuthGuard } from '../../hooks/useAuthGuard';
-import type { RootStackParamList } from '../../navigation/RootNavigator';
-import { useAppStore } from '../../stores/AppStore';
-
-const Title = styled.Text(({ theme }: { theme: DefaultTheme }) => `
-  font-size: ${theme.typography.title}px;
-  font-weight: 700;
-  margin-bottom: ${theme.spacing(2)}px;
-`);
-
-const Row = styled.View(({ theme }: { theme: DefaultTheme }) => `
-  margin-bottom: ${theme.spacing(1)}px;
-`);
-
-const Label = styled.Text(({ theme }: { theme: DefaultTheme }) => `
-  color: ${theme.colors.muted};
-`);
-
-const Value = styled.Text(() => `
-  font-weight: 600;
-`);
+import { Label, Row, Title, Value } from './Summary.styles';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'Summary'>;
 
