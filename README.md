@@ -2,6 +2,10 @@
 
 A small mobile app implementing Logi, Delivery Preference, Summary using Expo, styled-components, React Navigation and Zustand. It runs entirely on-device (no backend).
 
+[![Watch the demo]](./assets/videos/demo.mp4)
+
+Alternatively, download or open the video directly: [assets/videos/demo.mp4](./assets/videos/demo.mp4)
+
 ## Getting Started
 
 - Install: `npm i`
@@ -40,12 +44,6 @@ npm test
 ## Demo
 
 ![Tests Passed](./assets/images/test-passed.png)
-
-<!-- MP4 plays inline on GitHub; fallback link included. -->
-<video src="./assets/videos/demo.mp4" controls width="360">
-  Your browser does not support the video tag. You can download the video
-  <a href="./assets/videos/demo.mp4">here</a>.
-</video>
 
 ## What I'd Improve with More Time
 
