@@ -37,6 +37,17 @@ Run tests:
 npm test
 ```
 
+## Demo
+
+![Tests Passed](./assets/images/test-passed.png)
+
+<!-- GitHub renders MP4 inline more reliably than MOV. MOV may show as a download link. -->
+<video src="./assets/videos/demo.mov" controls width="360">
+  Your browser does not support the video tag. You can download the video
+  <a href="./assets/videos/demo.mov">here</a>.
+  
+</video>
+
 ## What I'd Improve with More Time
 
 - More test coverage (future time blocking, summary values)
