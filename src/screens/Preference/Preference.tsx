@@ -23,7 +23,7 @@ function PreferenceScreen({ route, navigation }: Props) {
   const setPreference = useAppStore((s) => s.setPreference);
 
   const [type, setType] = useState<"in_store" | "delivery" | "curbside" | null>(
-    route.params?.type ?? pref.type ?? null
+    route.params?.type ?? pref.type ?? "in_store"
   );
   const [address, setAddress] = useState(pref.address || "");
   const [carDescription, setCarDescription] = useState(

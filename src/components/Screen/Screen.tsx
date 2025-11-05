@@ -6,7 +6,7 @@ type Props = PropsWithChildren & { bottomContent?: ReactNode };
 
 export function Screen({ children, bottomContent }: Props) {
   return (
-    <Container>
+    <Container edges={['left', 'right', 'bottom']}>
       <KeyboardAvoidingView
         style={{ flex: 1 }}
         behavior={Platform.OS === 'ios' ? 'padding' : undefined}

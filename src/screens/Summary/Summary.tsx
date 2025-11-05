@@ -14,8 +14,7 @@ import {
   FloatingAction,
   Label,
   Row,
-  Title,
-  Value,
+  Value
 } from "./Summary.styles";
 
 type Props = NativeStackScreenProps<RootStackParamList, "Summary">;
@@ -37,7 +36,6 @@ function SummaryScreen({ navigation }: Props) {
         />
       }
     >
-      <Title>Summary</Title>
       <ContainerCard>
         <Row>
           <Label>Email</Label>

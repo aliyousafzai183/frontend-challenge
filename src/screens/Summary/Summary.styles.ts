@@ -54,7 +54,7 @@ export const FloatingAction = styled.Pressable(
   ({ theme }: { theme: DefaultTheme }) => `
   position: absolute;
   right: ${theme.spacing(2)}px;
-  bottom: ${theme.spacing(8)}px;
+  bottom: 10%;
   width: 56px;
   height: 56px;
   border-radius: 28px;
