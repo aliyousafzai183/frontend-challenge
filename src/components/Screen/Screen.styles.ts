@@ -1,8 +1,9 @@
 import { isTablet } from '@/src/utils/responsive';
+import { SafeAreaView as RNSafeAreaView } from 'react-native-safe-area-context';
 import { DefaultTheme } from 'styled-components';
 import styled from 'styled-components/native';
 
-export const Container = styled.SafeAreaView(({ theme }: { theme: DefaultTheme }) => `
+export const Container = styled(RNSafeAreaView)(({ theme }: { theme: DefaultTheme }) => `
   flex: 1;
   background-color: ${theme.colors.background};
 `);
