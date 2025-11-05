@@ -23,3 +23,11 @@ export const Content = styled.View(({ theme }: { theme: DefaultTheme }) => `
   padding: ${theme.spacing(2)}px;
   ${getContentStyles()}
 `);
+
+export const FooterOverlay = styled.View(({ theme }: { theme: DefaultTheme }) => `
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: ${theme.spacing(2)}px;
+  padding: ${theme.spacing(2)}px;
+`);

@@ -8,6 +8,9 @@ const lightColors = {
   danger: '#FF3B30',
   border: '#E6E6E6',
   muted: '#8E8E93',
+  warningBackground: '#FFF8E1',
+  warningText: '#8A6D3B',
+  warningBorder: '#F5DEB3',
 };
 
 const darkColors = {
@@ -20,6 +23,9 @@ const darkColors = {
   danger: '#FF453A',
   border: '#2A2A2E',
   muted: '#8E8E93',
+  warningBackground: '#3A2F14',
+  warningText: '#F2E0A6',
+  warningBorder: '#5A4A1E',
 };
 
 export const spacing = (n: number) => n * 8;

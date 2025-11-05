@@ -1,8 +1,10 @@
-import React, { PropsWithChildren } from 'react';
+import React, { PropsWithChildren, ReactNode } from 'react';
 import { KeyboardAvoidingView, Platform, ScrollView } from 'react-native';
-import { Container, Content } from './Screen.styles';
+import { Container, Content, FooterOverlay } from './Screen.styles';
 
-export function Screen({ children }: PropsWithChildren) {
+type Props = PropsWithChildren & { bottomContent?: ReactNode };
+
+export function Screen({ children, bottomContent }: Props) {
   return (
     <Container>
       <KeyboardAvoidingView
@@ -14,6 +16,7 @@ export function Screen({ children }: PropsWithChildren) {
           <Content>{children}</Content>
         </ScrollView>
       </KeyboardAvoidingView>
+      {bottomContent ? <FooterOverlay>{bottomContent}</FooterOverlay> : null}
     </Container>
   );
 }

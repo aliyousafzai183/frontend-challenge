@@ -11,13 +11,19 @@ export const Label = styled.Text(({ theme }: { theme: DefaultTheme }) => `
   margin-bottom: ${theme.spacing(1)}px;
 `);
 
-export const Input = styled.TextInput<{ hasError?: boolean }>(({ theme, hasError }: { theme: DefaultTheme; hasError?: boolean }) => `
+export const Input = styled.TextInput.attrs<{ hasError?: boolean }>((props: { theme: DefaultTheme }) => ({
+  placeholderTextColor: (props.theme as DefaultTheme).colors.textSecondary,
+}))<{
+  hasError?: boolean;
+}>(({ theme, hasError }: { theme: DefaultTheme; hasError?: boolean }) => `
   height: 48px;
   border-width: 1px;
   border-color: ${hasError ? theme.colors.danger : theme.colors.border};
   border-radius: ${theme.radii.md}px;
   padding: 0 ${theme.spacing(1.5)}px;
   font-size: ${theme.typography.body}px;
+  background-color: ${theme.colors.surface};
+  color: ${theme.colors.text};
 `);
 
 export const ErrorText = styled.Text(({ theme }: { theme: DefaultTheme }) => `
