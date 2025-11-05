@@ -13,8 +13,8 @@ describe('Auth guards', () => {
         </NavigationContainer>
       </ThemeProvider>
     );
-    const { getByText } = render(ui);
-    expect(getByText('Sign in')).toBeTruthy();
+    const { getByRole } = render(ui);
+    expect(getByRole('button', { name: 'Sign in' })).toBeTruthy();
   });
 });
 

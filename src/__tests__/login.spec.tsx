@@ -13,11 +13,11 @@ describe('Login flow', () => {
         </NavigationContainer>
       </ThemeProvider>
     );
-    const { getByText, getByLabelText } = render(ui);
+    const { getByText, getByLabelText, getByRole } = render(ui);
 
     const email = getByLabelText('Email');
     const password = getByLabelText('Password');
-    const button = getByText('Sign in');
+    const button = getByRole('button', { name: 'Sign in' });
 
     // Initially invalid
     expect(button.props.accessibilityState?.disabled ?? button.props.disabled).toBeTruthy();
